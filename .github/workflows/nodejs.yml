@@ -25,7 +25,7 @@ jobs:
       env: 
         client_id: ${{ secrets.CLIENT_ID }}
         client_secret: ${{ secrets.CLIENT_SECRET }}
-    - run: npm run deploy
-    ##- run: npm ci
+     - run: npm ci 
+     - run: npm run deploy
     #- run: npm run build --if-present
     #- run: npm test
