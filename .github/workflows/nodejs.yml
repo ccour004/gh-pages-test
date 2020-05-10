@@ -25,6 +25,8 @@ jobs:
       env: 
         client_id: ${{ secrets.CLIENT_ID }}
         client_secret: ${{ secrets.CLIENT_SECRET }} 
+    - run: export GITHUB_TOKEN=$token
+    - run: git config --global hub.protocol https
     - run: git config --global user.email "ccour004@gmail.com"
     - run: git config --global user.name "Colin Courtney"      
     - run: npm ci
