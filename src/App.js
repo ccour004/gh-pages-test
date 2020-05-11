@@ -4,7 +4,6 @@ import { GoogleLogin } from 'react-google-login';
 import './App.css';
 
 function App() {
-  console.log("CLIENT ID: "+process.env.REACT_APP_CLIENT_ID)
   return (
     <div className="App">
       <header className="App-header">
