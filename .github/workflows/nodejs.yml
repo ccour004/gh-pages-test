@@ -22,6 +22,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+        REACT_APP_TEST_SECRET: ${{ secrets.REACT_APP_TEST_SECRET }}
       env: 
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
         REACT_APP_TEST_SECRET: ${{ secrets.REACT_APP_TEST_SECRET }}
