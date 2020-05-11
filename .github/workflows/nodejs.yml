@@ -28,8 +28,9 @@ jobs:
         client_secret: ${{ secrets.CLIENT_SECRET }} 
     - run: git config --global user.email "ccour004@gmail.com"	
     - run: git config --global user.name "Colin Courtney"    
-    #  git remote set-url origin https://github.com/ccour004/gh-pages-test.git
-    - run: git remote set-url origin git@github.com:ccour004/gh-pages-test.git
+    #  https://username:password@github.com/username/repository.git
+    - run: git remote set-url origin https://ccour004:${{ secrets.CLIENT_PAT }}@github.com/ccour004/gh-pages-test.git
+    #- run: git remote set-url origin git@github.com:ccour004/gh-pages-test.git
     - run: git remote -v 
     - run: npm ci
     - run: npm run deploy
