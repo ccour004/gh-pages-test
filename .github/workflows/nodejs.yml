@@ -22,7 +22,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        token: ${{ secrets.CLIENT_PAT }}
+        #token: ${{ secrets.CLIENT_PAT }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       env: 
         client_id: ${{ secrets.CLIENT_ID }}
         client_secret: ${{ secrets.CLIENT_SECRET }} 
