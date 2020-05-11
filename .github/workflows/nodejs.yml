@@ -30,7 +30,7 @@ jobs:
     - run: git config --global user.email "ccour004@gmail.com"	
     - run: git config --global user.name "Colin Courtney"    
     #  https://username:password@github.com/username/repository.git
-    - run: git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/ccour004/gh-pages-test.git
+    - run: git remote set-url origin https://${{ secrets.CLIENT_PAT }}@github.com/ccour004/gh-pages-test.git
     #- run: git remote set-url origin git@github.com:ccour004/gh-pages-test.git
     - run: git remote -v 
     - run: npm ci
