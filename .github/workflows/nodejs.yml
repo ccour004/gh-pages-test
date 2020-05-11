@@ -22,6 +22,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      env: 
+        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
     - run: git config --global user.email "ccour004@gmail.com"	
     - run: git config --global user.name "Colin Courtney"    
     - run: git remote set-url origin https://${{ secrets.CLIENT_PAT }}@github.com/ccour004/gh-pages-test.git
