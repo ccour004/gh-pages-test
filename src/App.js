@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-//import Button from '@material-ui/core/Button';
 import { GoogleLogin } from 'react-google-login';
 import './App.css';
 
 function App() {
+  console.log("CLIENT ID: "+process.env.REACT_APP_CLIENT_ID)
   return (
     <div className="App">
       <header className="App-header">
@@ -13,11 +13,11 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <GoogleLogin
-          clientId={process.env.CLIENT_ID}
-          buttonText="Login"
+          clientId={process.env.REACT_APP_CLIENT_ID}
           onSuccess={()=>alert("Login sucess!")}
-          onFailure={()=>alert("Login failure!")}
+          onFailure={(error,details)=>alert("Login failure: "+JSON.stringify(error)+"("+details+")")}
           cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
         />
       </header>
     </div>
