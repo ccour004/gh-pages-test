@@ -24,9 +24,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
       env: 
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+        REACT_APP_TEST_SECRET: ${{ secrets.REACT_APP_TEST_SECRET }}
     - run: git config --global user.email "ccour004@gmail.com"	
     - run: git config --global user.name "Colin Courtney"    
     - run: git remote set-url origin https://${{ secrets.CLIENT_PAT }}@github.com/ccour004/gh-pages-test.git
     - run: export REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }}
+    - run: export REACT_APP_TEST_SECRET=${{ secrets.REACT_APP_TEST_SECRET }}
+    - run: env | grep REACT_APP
     - run: npm ci
     - run: npm run deploy

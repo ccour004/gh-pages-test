@@ -4,6 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 import './App.css';
 
 function App() {
+  console.log("TEST SECRET: "+process.env.REACT_APP_TEST_SECRET)
   return (
     <div className="App">
       <header className="App-header">
