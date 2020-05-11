@@ -22,15 +22,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
       env: 
         client_id: ${{ secrets.CLIENT_ID }}
         client_secret: ${{ secrets.CLIENT_SECRET }} 
     - run: git config --global user.email "ccour004@gmail.com"	
     - run: git config --global user.name "Colin Courtney"    
-    #- run: git remote set-url origin https://' + ${{ secrets.GH_TOKEN }} + '@github.com/ccour004/gh-pages-test.git
+    - run: git remote set-url origin git@github.com:ccour004/gh-pages-test.git
     - run: git remote -v 
     - run: npm ci
     - run: npm run deploy
-    #- run: npm run build --if-present
-    #- run: npm test
