@@ -25,6 +25,8 @@ jobs:
       env: 
         client_id: ${{ secrets.CLIENT_ID }}
         client_secret: ${{ secrets.CLIENT_SECRET }} 
+    - run: git config --global user.email "ccour004@gmail.com"	
+    - run: git config --global user.name "Colin Courtney"    
     - run: git remote -v 
     - run: npm ci
     - run: npm run deploy
