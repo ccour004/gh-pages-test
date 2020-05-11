@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import Button from '@material-ui/core/Button';
+import { GoogleLogin } from 'react-google-login';
 import './App.css';
 
 function App() {
@@ -11,17 +12,13 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button onClick={()=>alert('Hey!')} variant="contained" color="primary"> 
-          TestButton
-        </Button>
+        <GoogleLogin
+          clientId={process.env.CLIENT_ID}
+          buttonText="Login"
+          onSuccess={()=>alert("Login sucess!")}
+          onFailure={()=>alert("Login failure!")}
+          cookiePolicy={'single_host_origin'}
+        />
       </header>
     </div>
   );
