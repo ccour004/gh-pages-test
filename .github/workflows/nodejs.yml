@@ -1,34 +1,25 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: Deploy to GitHub Pages
+    on:
+      push:
+        branches:
+          - master
+    jobs:
+      build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v1
 
-name: Node.js CI
+        - name: Build
+          run: |
+            npm install
+            npm run-script build
+          env:
+            REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
 
-on:
-  push:
-    branches: [ master ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
-        REACT_APP_TEST_SECRET: ${{ secrets.REACT_APP_TEST_SECRET }}
-      env: 
-        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
-        REACT_APP_TEST_SECRET: ${{ secrets.REACT_APP_TEST_SECRET }}
-    - run: git config --global user.email "ccour004@gmail.com"	
-    - run: git config --global user.name "Colin Courtney"    
-    - run: git remote set-url origin https://${{ secrets.CLIENT_PAT }}@github.com/ccour004/gh-pages-test.git
-    - run: npm ci
-    - run: npm run deploy
+        - name: Deploy
+          uses: JamesIves/github-pages-deploy-action@releases/v3
+          with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_KEY }}
+            BRANCH: gh-pages
+            FOLDER: dist
