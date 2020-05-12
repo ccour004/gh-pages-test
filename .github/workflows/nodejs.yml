@@ -16,6 +16,7 @@ jobs:
         npm run-script build
       env:
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+        REACT_APP_TEST_SECRET: ${{ secrets.REACT_APP_TEST_SECRET }}
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
