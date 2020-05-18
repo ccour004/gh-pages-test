@@ -45,7 +45,7 @@ class App extends React.Component{
       .then(response => response.json())
       .then(data => {
         console.dir(data);
-        if(files && data.files)
+        if(data && data.files)
           this.setState({files:data.files})
       })
   }
