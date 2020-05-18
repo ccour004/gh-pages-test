@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchAppBar from './SearchAppBar.js';
-import CenteredGrid from './CenteredGrid.js';
+import FullWidthGrid from './FullWidthGrid.js';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import './App.css';
 
@@ -55,7 +55,7 @@ class App extends React.Component{
           scope={"https://www.googleapis.com/auth/drive.metadata.readonly"}
         />} 
       />
-      <CenteredGrid files={this.state.files}/>
+      <FullWidthGrid files={this.state.files}/>
       </div>
     )
   }
