@@ -46,7 +46,7 @@ class App extends React.Component{
         "Accept": "application/json"
       }})
       .then(response => response.json())
-      .then(data => this.setFiles(data.files))
+      .then((data) => this.setFiles(data.files))
       .catch(e => console.dir(e))
   }
 
