@@ -37,7 +37,7 @@ class App extends React.Component{
     this.setFiles = this.setFiles.bind(this);
   }
 
-  setFiles = (files) => {this.setState({files:data.files})}
+  setFiles = (files) => {this.setState({files})}
 
   loginSuccess = (returnObj) => {
     fetch(`https://www.googleapis.com/drive/v3/files?key=${process.env.REACT_APP_CLIENT_ID}`,
