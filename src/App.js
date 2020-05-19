@@ -10,7 +10,7 @@ class Login extends React.Component{
     this.state={loggedIn:false}
   }
 
-  render = () => {
+  render = () =>{
     return this.state.loggedIn?
     <GoogleLogout
       clientId={process.env.REACT_APP_CLIENT_ID}
@@ -36,14 +36,14 @@ class App extends React.Component{
     this.state={files:[]}
   }
 
-  loginSuccess = (returnObj) => {
+  loginSuccess = (returnObj,child) => {
     fetch(`https://www.googleapis.com/drive/v3/files?key=${process.env.REACT_APP_CLIENT_ID}`,
       {headers: {
         "Authorization": `Bearer ${returnObj.accessToken}`,
         "Accept": "application/json"
       }})
       .then(response => response.json())
-      .then((data) => this.setState({files:data.files}))
+      .then((data) => child.setState({files:data.files}))
       .catch(e => console.dir(e))
   }
 
@@ -51,12 +51,12 @@ class App extends React.Component{
     return (
       <div>
       <SearchAppBar login={<Login 
-          onSuccess={(returnObj)=>this.loginSuccess(returnObj)}
+          onSuccess={(returnObj)=>this.loginSuccess(returnObj,this.child)}
           onFailure={(error,details)=>alert("Login failure: "+JSON.stringify(error)+"("+details+")")}
           scope={"https://www.googleapis.com/auth/drive.metadata.readonly"}
         />} 
       />
-      <FullWidthGrid files={this.state.files}/>
+      <FullWidthGrid ref={child => this.child = child}/>
       </div>
     )
   }

@@ -1,9 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles((theme) => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     'margin-right': '40px',
@@ -16,19 +16,29 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-}));
+});
 
-export default function FullWidthGrid(props) {
-  const classes = useStyles();
-  return (
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-        {props.files.map((file)=>{
-            return <Grid item xs={12}>
-                <Paper className={classes.paper}>{file.name}</Paper>
-                </Grid>
-        })}
-        </Grid>
-      </div>
-  );
+class FullWidthGrid extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state={files:[]}
+  }
+  
+  render(){
+    const {classes} = this.props;
+    const {files} = this.state;
+    return (
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+          {files.map((file)=>{
+              return <Grid item xs={12}>
+                  <Paper className={classes.paper}>{file.name}</Paper>
+                  </Grid>
+          })}
+          </Grid>
+        </div>
+    );
+  }
 }
+
+export default withStyles(styles)(FullWidthGrid)
