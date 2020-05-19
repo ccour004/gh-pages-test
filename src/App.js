@@ -34,8 +34,10 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state={files:[]}
-    this.loginSuccess = this.loginSuccess.bind(this);
+    this.setFiles = this.setFiles.bind(this);
   }
+
+  setFiles = (files) => {this.setState({files:data.files})}
 
   loginSuccess = (returnObj) => {
     fetch(`https://www.googleapis.com/drive/v3/files?key=${process.env.REACT_APP_CLIENT_ID}`,
@@ -44,10 +46,7 @@ class App extends React.Component{
         "Accept": "application/json"
       }})
       .then(response => response.json())
-      .then((data) => {
-        console.dir(data);
-        this.setState({files:data.files})
-      })
+      .then(data => this.setFiles(data.files))
       .catch(e => console.dir(e))
   }
 
