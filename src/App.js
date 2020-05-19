@@ -34,6 +34,7 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state={files:[]}
+    this.loginSuccess = this.loginSuccess.bind(this);
   }
 
   loginSuccess = (returnObj) => {
@@ -45,9 +46,9 @@ class App extends React.Component{
       .then(response => response.json())
       .then((data) => {
         console.dir(data);
-        if(data && data.files)
-          this.setState({files:data.files})
+        this.setState({files:data.files})
       })
+      .catch(e => console.dir(e))
   }
 
   render(){
