@@ -10,7 +10,7 @@ class Login extends React.Component{
     this.state={loggedIn:false}
   }
 
-  render(){
+  render = () => {
     return this.state.loggedIn?
     <GoogleLogout
       clientId={process.env.REACT_APP_CLIENT_ID}
@@ -47,7 +47,7 @@ class App extends React.Component{
       .catch(e => console.dir(e))
   }
 
-  render(){
+  render = () => {
     return (
       <div>
       <SearchAppBar login={<Login 
